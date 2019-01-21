@@ -15,6 +15,8 @@
     font-weight: bolder;
     margin: 5px;
     height: 30px;
+    display: block;
+    cursor: pointer;
   }
   #add-victim {
     width: 30px;    
@@ -22,7 +24,6 @@
   #spin-btn {
     margin: 100px 5px 20px;
     width: 100px;
-    display: block;
   }
 
 
@@ -33,9 +34,15 @@
   }
   .chart {
     grid-column: 2;
+    grid-row: 1/3;
+  }
+  .victims {
+    grid-column: 3;
+    grid-row: 1;
   }
   .controls {
     grid-column: 3;
+    grid-row: 2;
   }
 
   input {
@@ -46,24 +53,21 @@
 
   </style>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-</head>
-<body>
-  <h1>Who should we blame this time?</h1>
-  <div class="wrapper">
-    <div class="chart">
-      <canvas id="chart-area"></canvas>
-    </div>
-    <div class="controls">
-      <input class="victim" />
-      <input class="victim" />
-      <input class="victim" />
-      <button id="add-victim">+</button>
-
-      <button id="spin-btn">Spin!</button>
-    </div>
-  </div>
-
   <script>
+    window.onload = function() {
+      let ctx = document.getElementById('chart-area').getContext('2d');
+      let pieChart = new Chart(ctx,{
+          type: 'pie',
+          data: data,
+          options: {
+            animation: {
+              animateRotate: false,
+              animateScale: true
+            },
+
+          }
+      });
+    }
     const randomScalingFactor = function() {
       return Math.round(Math.random() * 100);
     };
@@ -88,21 +92,25 @@
         'Blue'
       ]
     };
-
-    let ctx = document.getElementById('chart-area').getContext('2d');
-    let myPieChart = new Chart(ctx,{
-        type: 'pie',
-        data: data,
-        options: {
-          animation: {
-            animateRotate: false,
-            animateScale: true
-          },
-
-        }
-    });
-
   </script>
+</head>
+<body>
+  <h1>Who should we blame this time?</h1>
+  <div class="wrapper">
+    <div class="chart" style="max-width: 500px;">
+      <canvas id="chart-area"></canvas>
+    </div>
+    <div class="victims">
+      <h2>Villains</h2>
+      <input class="victim" value="The user" />
+      <input class="victim" value="The compiler" />
+      <input class="victim" value="Space-time continuum"/>
+      <!-- <button id="add-victim">+</button> -->
 
+    </div>
+    <div class="controls">
+      <button id="spin-btn">Spin!</button>
+    </div>
+  </div>
 </body>
 </html>
