@@ -7,21 +7,23 @@
 </head>
 <body>
   <h1>Who should we blame this time?</h1>
-  <div class="wrapper">
-    <div class="chart" style="max-width: 500px;">
-      <canvas id="chart-area"></canvas>
-    </div>
-    <div class="victims">
-      <h2>Villains</h2>
-      <input class="victim" value="The user" />
-      <input class="victim" value="The compiler" />
-      <input class="victim" value="Space-time continuum"/>
-      <!-- <button id="add-victim">+</button> -->
+  <form>
+    <div class="wrapper">
+      <div class="chart" style="max-width: 500px;">
+        <canvas id="chart-area"></canvas>
+      </div>
+      <div class="victims">
+        <h2>Villains</h2>
+        <input class="victim" value="The user" />
+        <input class="victim" value="The compiler" />
+        <input class="victim" value="The vendor"/>
+        <!-- <button id="add-victim">+</button> -->
 
+      </div>
+      <div class="controls">
+        <button type="submit" id="spin-btn">Spin!</button>
+      </div>
     </div>
-    <div class="controls">
-      <button id="spin-btn">Spin!</button>
-    </div>
-  </div>
+  </form>
 </body>
 </html>
